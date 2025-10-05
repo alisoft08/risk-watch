@@ -1,59 +1,126 @@
-# LearningCenter
+# 🛡️ RiskWatch Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+**RiskWatch** es una aplicación web desarrollada con **Angular (última versión)** y **TypeScript** que permite **gestionar proveedores** y **verificar su nivel de riesgo**.  
+La aplicación se conecta a una **API externa** que proporciona los datos de las entidades y resultados del proceso de *screening*.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologías principales
+
+| Área | Tecnología | Descripción |
+|------|-------------|--------------|
+| Framework | **Angular 20+** | Frontend moderno basado en componentes. |
+| Lenguaje | **TypeScript** | Tipado estático y escalabilidad. |
+| UI | **Bootstrap / Angular Material** | Interfaz moderna y responsiva. |
+| Comunicación | **HttpClient (Angular)** | Consumo de la API REST del backend. |
+| Build | **Vite / Angular CLI** | Entorno rápido de desarrollo y build optimizado. |
+
+---
+
+## 📁 Estructura del proyecto
+
+
+
+## ⚙️ Configuración de entorno
+
+En el archivo `environment.development.ts` configura la **URL base de la API**:
+
+```typescript
+export const environment = {
+  production: false,
+  serverBasePath: 'http://localhost:5076/api/v1' // URL de la API backend
+};
+````
+
+Así podrás consumir los endpoints usando servicios Angular:
+
+```typescript
+this.http.get(`${environment.serverBasePath}/suppliers`);
+```
+
+---
+
+## 🧩 Instalación y ejecución
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/tuusuario/riskwatch-frontend.git
+cd riskwatch-frontend
+```
+
+### Instalar dependencias
+
+```bash
+npm install
+```
+
+### Ejecutar servidor de desarrollo
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
+## 💡 Características principales
+
+✅ **Gestión de proveedores:** lista, registro y detalle de cada proveedor.
+🔍 **Consulta de riesgo:** muestra coincidencias obtenidas desde la API.
+🌐 **Conexión a API REST:** integración simple mediante `HttpClient`.
+🎨 **Diseño responsive:** adaptado para pantallas de escritorio y móviles.
+🧱 **Arquitectura modular:** separación por *features* y *shared components*.
+
+---
+
+## 📚 Scripts útiles
+
+| Comando    | Descripción                                     |
+| ---------- | ----------------------------------------------- |
+| `ng serve` | Ejecuta la app en modo desarrollo.              |
+| `ng build` | Genera los archivos para producción en `/dist`. |
+| `ng test`  | Ejecuta los tests unitarios (si los hay).       |
+
+---
+
+## 📦 Ejemplo de servicio para consumir la API
+
+```typescript
+// src/app/core/services/suppliers-api.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment.development';
+import { Observable } from 'rxjs';
+import { Supplier } from '../../shared/models/supplier.model';
+
+@Injectable({ providedIn: 'root' })
+export class SuppliersApiService {
+  private apiUrl = `${environment.serverBasePath}/suppliers`;
+
+  constructor(private http: HttpClient) {}
+
+  getAllSuppliers(): Observable<Supplier[]> {
+    return this.http.get<Supplier[]>(this.apiUrl);
+  }
+
+  getSupplierById(id: number): Observable<Supplier> {
+    return this.http.get<Supplier>(`${this.apiUrl}/${id}`);
+  }
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🧑‍💻 Autor
 
-## Building
+**Alison Arrieta**
+📧 [alisonarrieta06@gmail.com](mailto:alisonarrieta06@gmail.com)
 
-To build the project run:
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
