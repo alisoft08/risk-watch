@@ -1,0 +1,71 @@
+<div class="container-with-spacing">
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>Legal Name</mat-label>
+    <input matInput formControlName="legalName" required>
+    @if (form.get('legalName')!.touched && form.get('legalName')!.hasError('required')) {
+      <mat-error>Legal Name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Brand Name</mat-label>
+    <input matInput formControlName="brandName" required>
+    @if (form.get('brandName')!.touched && form.get('brandName')!.hasError('required')) {
+      <mat-error>Brand Name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tax ID</mat-label>
+    <input matInput formControlName="taxId" required>
+    @if (form.get('taxId')!.touched && form.get('taxId')!.hasError('required')) {
+      <mat-error>Tax ID is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNumber" required>
+    @if (form.get('phoneNumber')!.touched && form.get('phoneNumber')!.hasError('required')) {
+      <mat-error>Phone Number is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email" required>
+    @if (form.get('email')!.touched && form.get('email')!.hasError('required')) {
+      <mat-error>Email is required</mat-error>
+    }
+    @if (form.get('email')!.touched && form.get('email')!.hasError('email')) {
+      <mat-error>Please enter a valid email</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" required>
+    @if (form.get('address')!.touched && form.get('address')!.hasError('required')) {
+      <mat-error>Address is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input matInput formControlName="country" required>
+    @if (form.get('country')!.touched && form.get('country')!.hasError('required')) {
+      <mat-error>Country is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Annual Revenue USD</mat-label>
+    <input matInput formControlName="annualRevenueUSD" type="number">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+    {{ isEdit ? 'Update' : 'Add' }} Supplier
+  </button>
+</form>
+</div>

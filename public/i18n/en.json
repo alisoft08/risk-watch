@@ -1,0 +1,26 @@
+{
+  "option": {
+    "home": "Home",
+    "about": "About",
+    "categories": "Categories",
+    "courses": "Courses",
+    "suppliers": "Suppliers"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "ACME Learning Center is an Education Business Platform, part of ACME Corporation."
+  },
+  "home": {
+    "title": "Welcome",
+    "content": "Welcome to ACME Learning Center."
+  },
+  "page-not-found": {
+    "title": "Page Not Found",
+    "content": "The path <strong>{{ invalid_path }}</strong> is not valid.",
+    "go-home": "Go Home"
+  },
+  "suppliers": {
+    "title": "Suppliers List"
+  }
+
+}

@@ -1,0 +1,79 @@
+<div class="container-with-spacing">
+<h1>{{ 'suppliers.title' | translate }}</h1>
+
+@if (store.loading()) {
+  <mat-spinner diameter="40"></mat-spinner>
+}
+@if (store.error()) {
+  <mat-error>{{ store.error() }}</mat-error>
+}
+<table mat-table [dataSource]="store.suppliers()" class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.id }} </td>
+  </ng-container>
+
+  <!-- LEGAL NAME Column -->
+  <ng-container matColumnDef="legalName">
+    <th mat-header-cell *matHeaderCellDef> Legal Name </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.legalName }} </td>
+  </ng-container>
+
+  <!-- BRAND NAME Column -->
+  <ng-container matColumnDef="brandName">
+    <th mat-header-cell *matHeaderCellDef> Brand Name </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.brandName }} </td>
+  </ng-container>
+
+  <!-- TAX ID Column -->
+  <ng-container matColumnDef="taxId">
+    <th mat-header-cell *matHeaderCellDef> Tax ID </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.taxId }} </td>
+  </ng-container>
+
+  <!-- PHONE NUMBER Column -->
+  <ng-container matColumnDef="phoneNumber">
+    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.phoneNumber }} </td>
+  </ng-container>
+
+  <!-- EMAIL Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.email }} </td>
+  </ng-container>
+
+  <!-- ADDRESS Column -->
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.address }} </td>
+  </ng-container>
+
+  <!-- COUNTRY Column -->
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef> Country </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.country }} </td>
+  </ng-container>
+
+  <!-- ANNUAL REVENUE USD Column -->
+  <ng-container matColumnDef="annualRevenueUSD">
+    <th mat-header-cell *matHeaderCellDef> Annual Revenue USD </th>
+    <td mat-cell *matCellDef="let supplier"> {{ supplier.annualRevenueUSD }} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let supplier">
+      <button mat-button (click)="editSupplier(supplier.id)">Edit</button>
+      <button mat-button (click)="deleteSupplier(supplier.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<button mat-raised-button color="primary" (click)="router.navigate(['learning/suppliers/new'])">Add Supplier</button>
+</div>
