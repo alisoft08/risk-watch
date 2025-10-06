@@ -1,0 +1,32 @@
+<div class="header-container">
+  <button mat-raised-button color="accent" (click)="goBackToSuppliers()">
+    {{ 'riskEntities.backToSuppliers' | translate }}
+  </button>
+</div>
+
+<table class="risk-table" *ngIf="riskEntitiesSignal() as items; else noData">
+  <thead>
+  <tr>
+
+    <th>Nombre</th>
+    <th>Jurisdicción</th>
+    <th>Vinculado a</th>
+    <th>Fuente</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let it of items">
+    <td>{{ it.name }}</td>
+    <td>{{ it.jurisdiction || '—' }}</td>
+    <td [title]="it.linkedTo || '—'">
+      {{ (it.linkedTo || '').trim() || '—' }}
+    </td>
+
+    <td>{{ it.dataSource || '—' }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p *ngIf="!loadingRiskSignal() && !errorRiskSignal()">Sin resultados</p>
+</ng-template>

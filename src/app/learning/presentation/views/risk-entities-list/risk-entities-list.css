@@ -1,0 +1,17 @@
+
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.risk-table th, .risk-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.risk-table thead th {
+  background: #f8fafc;
+  font-weight: 600;
+  position: sticky;
+  top: 0; /* útil si el modal es alto con scroll */
+}
