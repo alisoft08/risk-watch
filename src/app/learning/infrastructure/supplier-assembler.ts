@@ -16,10 +16,12 @@ export class SupplierAssembler implements BaseAssembler<Supplier, SupplierResour
       taxId: resource.taxId,
       phoneNumber: resource.phoneNumber,
       email: resource.email,
+      web: resource.web,
       // website no viene en el resource; lo dejamos undefined (el constructor lo maneja)
       address: resource.address,
       country: resource.country,
-      annualRevenueUSD: resource.annualRevenueUSD
+      annualRevenueUsd: resource.annualRevenueUsd,
+      lastUpdate: resource.lastUpdate ? new Date(resource.lastUpdate) : null
     });
   }
 
@@ -31,9 +33,12 @@ export class SupplierAssembler implements BaseAssembler<Supplier, SupplierResour
       taxId: entity.taxId,
       phoneNumber: entity.phoneNumber,
       email: entity.email,
+      web: entity.web,
       address: entity.address,
       country: entity.country,
-      annualRevenueUSD: entity.annualRevenueUSD
+      annualRevenueUsd: entity.annualRevenueUsd,
+      lastUpdate: entity.lastUpdate?.toISOString() ?? ''
+
 
     };
   }

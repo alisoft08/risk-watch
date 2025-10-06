@@ -4,12 +4,14 @@ export interface SupplierResource extends BaseResource {
   id: number;
   legalName: string;
   brandName: string;
-  taxId: string;
+  taxId: number;
   phoneNumber: string;
   email: string;
+  web: string;
   address: string;
   country: string;
-  annualRevenueUSD: number;
+  annualRevenueUsd: number;
+  lastUpdate: string;
 
 }
 

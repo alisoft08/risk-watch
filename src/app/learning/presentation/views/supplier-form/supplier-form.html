@@ -1,71 +1,107 @@
 <div class="container-with-spacing">
-<form [formGroup]="form" (ngSubmit)="submit()">
+  <button type="button" class="close-btn" (click)="router.navigate(['/suppliers'])">Cancelar</button>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
   <mat-form-field>
-    <mat-label>Legal Name</mat-label>
+    <mat-label>{{ 'suppliers.legalName' | translate }}</mat-label>
     <input matInput formControlName="legalName" required>
     @if (form.get('legalName')!.touched && form.get('legalName')!.hasError('required')) {
-      <mat-error>Legal Name is required</mat-error>
+      <mat-error>{{ 'suppliers.legalName' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Brand Name</mat-label>
+    <mat-label>{{ 'suppliers.brandName' | translate }}</mat-label>
     <input matInput formControlName="brandName" required>
     @if (form.get('brandName')!.touched && form.get('brandName')!.hasError('required')) {
-      <mat-error>Brand Name is required</mat-error>
+      <mat-error>{{ 'suppliers.brandName' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Tax ID</mat-label>
-    <input matInput formControlName="taxId" required>
-    @if (form.get('taxId')!.touched && form.get('taxId')!.hasError('required')) {
-      <mat-error>Tax ID is required</mat-error>
-    }
+    <mat-label>{{ 'suppliers.taxId' | translate }}</mat-label>
+    <input matInput formControlName="taxId" type="number" required>
+    @if (taxId?.touched && taxId?.invalid)
+    { <small *ngIf="taxId?.errors?.['required']">{{ 'suppliers.taxId' | translate }} {{'warnings.is-required' | translate }}</small>
+      <small *ngIf="taxId?.errors?.['pattern']">{{'warnings.must-have' | translate }} 11</small> }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Phone Number</mat-label>
+    <mat-label>{{ 'suppliers.phoneNumber' | translate }}</mat-label>
     <input matInput formControlName="phoneNumber" required>
     @if (form.get('phoneNumber')!.touched && form.get('phoneNumber')!.hasError('required')) {
-      <mat-error>Phone Number is required</mat-error>
+      <mat-error>{{ 'suppliers.phoneNumber' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Email</mat-label>
+    <mat-label>{{ 'suppliers.email' | translate }}</mat-label>
     <input matInput formControlName="email" type="email" required>
     @if (form.get('email')!.touched && form.get('email')!.hasError('required')) {
-      <mat-error>Email is required</mat-error>
+      <mat-error>{{ 'suppliers.email' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
     @if (form.get('email')!.touched && form.get('email')!.hasError('email')) {
-      <mat-error>Please enter a valid email</mat-error>
+      <mat-error>{{'warnings.valid-format' | translate }} {{ 'suppliers.email' | translate }}</mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Address</mat-label>
+    <mat-label>{{ 'suppliers.web' | translate }}</mat-label>
+    <input matInput formControlName="web" type="url" required>
+    @if (form.get('web')!.touched && form.get('web')!.hasError('required')) {
+      <mat-error>{{ 'suppliers.web' | translate }} {{'warnings.is-required' | translate }} </mat-error>
+    }
+
+    @if (form.get('web')!.touched && form.get('web')!.hasError('pattern')) {
+      <mat-error>{{ 'suppliers.web' | translate }} {{'warnings.must-start-with' | translate }} https:// {{'form.or' | translate}} http://</mat-error>
+    }
+  </mat-form-field>
+
+
+
+  <mat-form-field>
+    <mat-label>{{ 'suppliers.address' | translate }}</mat-label>
     <input matInput formControlName="address" required>
     @if (form.get('address')!.touched && form.get('address')!.hasError('required')) {
-      <mat-error>Address is required</mat-error>
+      <mat-error>{{ 'suppliers.address' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Country</mat-label>
-    <input matInput formControlName="country" required>
+    <mat-label>{{ 'suppliers.country' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="country"
+      [matAutocomplete]="auto"
+      required
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onCountrySelected($event.option.value)"
+    >
+      <mat-option
+        *ngFor="let c of filteredCountries"
+        [value]="c"
+      >
+        {{ c.name }}
+      </mat-option>
+    </mat-autocomplete>
+
     @if (form.get('country')!.touched && form.get('country')!.hasError('required')) {
-      <mat-error>Country is required</mat-error>
+      <mat-error>{{ 'suppliers.country' | translate }} {{'warnings.is-required' | translate }} </mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Annual Revenue USD</mat-label>
-    <input matInput formControlName="annualRevenueUSD" type="number">
+    <mat-label>{{ 'suppliers.annualRevenueUSD' | translate }}</mat-label>
+    <input matInput formControlName="annualRevenueUsd" type="number" required>
+    @if (form.get('annualRevenueUsd')!.touched && form.get('annualRevenueUsd')!.hasError('required')) {
+      <mat-error>{{ 'suppliers.annualRevenueUSD' | translate }} {{'warnings.is-required' | translate }} </mat-error>
+    }
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-    {{ isEdit ? 'Update' : 'Add' }} Supplier
+    {{ isEdit ? ('form.update' | translate) : ('form.add' | translate) }} {{ 'suppliers.supplier' | translate }}
   </button>
 </form>
 </div>

@@ -8,13 +8,14 @@ export class Supplier implements BaseEntity {
   private _id: number;
   private _legalName: string;
   private _brandName: string;
-  private _taxId: string;
+  private _taxId: number;
   private _phoneNumber: string;
   private _email: string;
-  private _website: string;
+  private _web: string;
   private _address: string;
   private _country: string;
-  private _annualRevenueUSD: number
+  private _annualRevenueUsd: number;
+  private _lastUpdate: Date | null;
 
   /**
    * Constructor
@@ -24,14 +25,14 @@ export class Supplier implements BaseEntity {
     id: number;
     legalName: string;
     brandName: string;
-    taxId: string;
+    taxId: number;
     phoneNumber: string;
     email: string;
-    website?: string;
+    web: string;
     address: string;
     country: string;
-    annualRevenueUSD: number
-
+    annualRevenueUsd: number;
+    lastUpdate?: Date | null;
   }) {
     this._id = supplier.id;
     this._legalName = supplier.legalName;
@@ -39,10 +40,12 @@ export class Supplier implements BaseEntity {
     this._taxId = supplier.taxId;
     this._phoneNumber = supplier.phoneNumber;
     this._email = supplier.email;
-    this._website = supplier.website ?? '';
+    this._web = supplier.web;
     this._address = supplier.address;
     this._country = supplier.country;
-    this._annualRevenueUSD = supplier.annualRevenueUSD
+    this._annualRevenueUsd = supplier.annualRevenueUsd
+    this._lastUpdate = supplier.lastUpdate ?? null; // 👈
+
 
   }
 
@@ -70,10 +73,10 @@ export class Supplier implements BaseEntity {
     this._brandName = value;
   }
 
-  get taxId(): string {
+  get taxId(): number {
     return this._taxId;
   }
-  set taxId(value: string) {
+  set taxId(value: number) {
     this._taxId = value;
   }
 
@@ -91,11 +94,11 @@ export class Supplier implements BaseEntity {
     this._email = value;
   }
 
-  get website(): string {
-    return this._website;
+  get web(): string {
+    return this._web;
   }
-  set website(value: string) {
-    this._website = value;
+  set web(value: string) {
+    this._web = value;
   }
 
   get address(): string {
@@ -112,12 +115,17 @@ export class Supplier implements BaseEntity {
     this._country = value;
   }
 
-  get annualRevenueUSD(): number {
-    return this._annualRevenueUSD;
+  get annualRevenueUsd(): number {
+    return this._annualRevenueUsd;
   }
-  set annualRevenueUSD(value: number) {
-    this._annualRevenueUSD = value;
+  set annualRevenueUsd(value: number) {
+    this._annualRevenueUsd = value;
   }
+
+  get lastUpdate(): Date | null {
+    return this._lastUpdate;
+  }
+
 
 
 }
