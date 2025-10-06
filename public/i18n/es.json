@@ -19,6 +19,34 @@
   },
 
   "suppliers": {
-    "title": "Lista de Proveedores"
+    "title": "Lista de Proveedores",
+    "id": "ID",
+    "legalName": "Nombre Legal",
+    "brandName": "Nombre Comercial",
+    "taxId": "ID Fiscal",
+    "phoneNumber": "Número de Teléfono",
+    "email": "Correo Electrónico",
+    "web": "Sitio Web",
+    "address": "Dirección",
+    "country": "País",
+    "annualRevenueUSD": "Ingreso Anual (USD)",
+    "actions": "Acciones",
+    "add-supplier": "Agregar Proveedor",
+    "supplier": "Proveedor"
+  },
+  "form": {
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "update": "Actualizar",
+    "add": "Agregar",
+    "or": "o",
+    "screening": "Screening"
+  },
+  "warnings": {
+    "delete-supplier": "¿Está seguro de que desea eliminar este proveedor?",
+    "must-have": "Debe tener este número de dígitos: ",
+    "is-required": "es obligatorio",
+    "valid-format": "Por favor, ingrese un formato válido de",
+    "must-start-with": "debe comenzar con"
   }
 }

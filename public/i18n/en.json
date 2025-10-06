@@ -18,7 +18,39 @@
     "go-home": "Go Home"
   },
   "suppliers": {
-    "title": "Suppliers List"
+    "title": "Suppliers List",
+    "id": "ID",
+    "legalName": "Legal Name",
+    "brandName": "Brand Name",
+    "taxId": "Tax ID",
+    "phoneNumber": "Phone Number",
+    "email": "Email",
+    "web": "Website",
+    "address": "Address",
+    "country": "Country",
+    "annualRevenueUSD": "Annual Revenue (USD)",
+    "actions": "Actions",
+    "add-supplier": "Add Supplier",
+    "supplier": "Supplier"
+
+
+  },
+
+  "form": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "update": "Update",
+    "add": "Add",
+    "or": "or",
+    "screening": "Screening"
+  },
+
+  "warnings": {
+    "delete-supplier": "Are you sure you want to delete this supplier?",
+    "must-have": "Must have this number of digits: ",
+    "is-required": "is required",
+    "valid-format": "Please enter a valid",
+    "must-start-with": "must start with"
   }
 
 }
