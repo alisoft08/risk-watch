@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatToolbar, MatToolbarRow} from '@angular/material/toolbar';
 import {MatButton} from '@angular/material/button';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LanguageSwitcher} from '../language-switcher/language-switcher';
-import {FooterContent} from '../footer-content/footer-content';
+import {AuthStore} from '../../../application/auth-store';
 
 @Component({
   selector: 'app-layout',
@@ -23,9 +23,21 @@ import {FooterContent} from '../footer-content/footer-content';
   styleUrl: './layout.css'
 })
 export class Layout {
+  private authStore = inject(AuthStore);
+  private router = inject(Router);
+
   options = [
     { link: '/home',  label: 'option.home'},
     { link: '/about', label: 'option.about'},
-    { link: '/learning/suppliers', label: 'option.suppliers'}
+    { link: '/suppliers', label: 'option.suppliers'}
   ];
+
+  get isAuthenticated() {
+    return this.authStore.isAuthenticated();
+  }
+
+  onLogout(): void {
+    this.authStore.logout();
+    this.router.navigate(['/sign-in']);
+  }
 }

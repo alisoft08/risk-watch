@@ -2,13 +2,17 @@
   <mat-toolbar-row>
     <h1>Risk Watch</h1>
     <div class="mat-spacer"></div>
-    @for (option of options; track option.label) {
-      <a mat-button [routerLink]="option.link" routerLinkActive="active">
-        {{ option.label | translate }}
-      </a>
+    @if (isAuthenticated) {
+      @for (option of options; track option.label) {
+        <a mat-button [routerLink]="option.link" routerLinkActive="active">
+          {{ option.label | translate }}
+        </a>
+      }
+      <button mat-button (click)="onLogout()">
+        {{ 'option.logout' | translate }}
+      </button>
     }
     <app-language-switcher/>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet/>
-
