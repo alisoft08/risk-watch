@@ -2,7 +2,8 @@
   "option": {
     "home": "Home",
     "about": "About",
-    "suppliers": "Suppliers"
+    "suppliers": "Suppliers",
+    "logout": "Logout"
   },
   "about": {
     "title": "About Us",
@@ -29,11 +30,10 @@
     "address": "Address",
     "country": "Country",
     "annualRevenueUSD": "Annual Revenue (USD)",
+    "last-update": "Last Update",
     "actions": "Actions",
     "add-supplier": "Add Supplier",
     "supplier": "Supplier"
-
-
   },
 
   "form": {
@@ -42,7 +42,8 @@
     "update": "Update",
     "add": "Add",
     "or": "or",
-    "screening": "Screening"
+    "screening": "Screening",
+    "cancel": "Cancel"
   },
 
   "warnings": {
@@ -50,7 +51,29 @@
     "must-have": "Must have this number of digits: ",
     "is-required": "is required",
     "valid-format": "Please enter a valid",
-    "must-start-with": "must start with"
-  }
+    "must-start-with": "must start with",
+    "min-length": "must be at least"
+  },
 
+  "auth": {
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "username": "Username",
+    "password": "Password",
+    "register": "Register",
+    "registering": "Registering...",
+    "login": "Login",
+    "logging-in": "Logging in...",
+    "createAccount": "Create Account"
+  },
+  "riskEntities": {
+    "backToSuppliers": "Return to Suppliers List"
+  },
+  "screening": {
+    "title": "Risk Screening",
+    "close": "Close",
+    "searching": "Searching for matches…",
+    "matchesFound": "Matches found:",
+    "viewList": "View Matches List"
+  }
 }

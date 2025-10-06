@@ -2,7 +2,8 @@
   "option": {
     "home": "Inicio",
     "about": "Acerca de",
-    "suppliers": "Proveedores"
+    "suppliers": "Proveedores",
+    "logout": "Cerrar Sesión"
   },
   "about": {
     "title": "Acerca de Nosotros",
@@ -30,6 +31,7 @@
     "address": "Dirección",
     "country": "País",
     "annualRevenueUSD": "Ingreso Anual (USD)",
+    "last-update": "Última Actualización",
     "actions": "Acciones",
     "add-supplier": "Agregar Proveedor",
     "supplier": "Proveedor"
@@ -40,13 +42,36 @@
     "update": "Actualizar",
     "add": "Agregar",
     "or": "o",
-    "screening": "Screening"
+    "screening": "Screening",
+    "cancel": "Cancelar"
   },
   "warnings": {
     "delete-supplier": "¿Está seguro de que desea eliminar este proveedor?",
     "must-have": "Debe tener este número de dígitos: ",
     "is-required": "es obligatorio",
     "valid-format": "Por favor, ingrese un formato válido de",
-    "must-start-with": "debe comenzar con"
+    "must-start-with": "debe comenzar con",
+    "min-length": "debe tener al menos"
+  },
+  "auth": {
+    "signUp": "Registrarse",
+    "signIn": "Iniciar Sesión",
+    "username": "Nombre de Usuario",
+    "password": "Contraseña",
+    "register": "Registrar",
+    "registering": "Registrando...",
+    "login": "Ingresar",
+    "logging-in": "Ingresando...",
+    "createAccount": "Crear Cuenta"
+  },
+  "riskEntities": {
+    "backToSuppliers": "Retornar a Lista de Proveedores"
+  },
+  "screening": {
+    "title": "Screening de Riesgo",
+    "close": "Cerrar",
+    "searching": "Buscando coincidencias…",
+    "matchesFound": "Coincidencias encontradas:",
+    "viewList": "Ver Lista de Coincidencias"
   }
 }
