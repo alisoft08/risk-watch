@@ -1,7 +1,7 @@
 import {BaseEntity} from '../domain/model/base-entity';
 import {BaseResource, BaseResponse} from './base-response';
 import {BaseAssembler} from './base-assembler';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {catchError, map, Observable, throwError} from 'rxjs';
 
 /**
@@ -57,6 +57,33 @@ export abstract class BaseApiEndpoint<
       map(resource => this.assembler.toEntityFromResource(resource)),
       catchError(this.handleError(`Failed to fetch entity with id=${id}`))
     );
+  }
+
+  getAllByName(name: string): Observable<TEntity[]> {
+    return this.http.get<TResponse | TResource[]>(`${this.endpointUrl}?name=${name}`).pipe(
+      map(response => {
+        console.log(response);
+        if (Array.isArray(response)) {
+          return response.map(resource  => this.assembler.toEntityFromResource(resource));
+        }
+        return this.assembler.toEntitiesFromResponse(response as TResponse);
+      }),
+      catchError(this.handleError(`Failed to fetch entities with name = ${name}`))
+    );
+  }
+
+  getAllResponse(): Observable<HttpResponse<TEntity[]>> {
+    return this.http
+      .get<TResponse | TResource[]>(this.endpointUrl, { observe: 'response' as const })
+      .pipe(
+        map((resp) => {
+          const body = resp.body;
+          const entities = Array.isArray(body)
+            ? (body as TResource[]).map(r => this.assembler.toEntityFromResource(r))
+            : this.assembler.toEntitiesFromResponse(body as TResponse);
+          return resp.clone({ body: entities });
+        })
+      );
   }
 
   /**

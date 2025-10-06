@@ -8,5 +8,5 @@ export interface BaseResponse {
  * Abstract base resource interface for API resources.
  */
 export interface BaseResource {
-  id: number;
+
 }
