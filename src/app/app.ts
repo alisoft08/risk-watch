@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('learning-center');
+  protected readonly title = signal('risk-watch');
   private translate: TranslateService;
 
   constructor() {

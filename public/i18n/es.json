@@ -2,17 +2,15 @@
   "option": {
     "home": "Inicio",
     "about": "Acerca de",
-    "categories": "Categorías",
-    "courses": "Cursos",
     "suppliers": "Proveedores"
   },
   "about": {
     "title": "Acerca de Nosotros",
-    "content": "ACME Learning Center es una Plataforma educativa empresarial, parte de ACME Corporation."
+    "content": "Risk Watch es una plataforma de inteligencia de datos enfocada en el screening y monitoreo de entidades de alto riesgo a nivel mundial. Nuestra misión es promover la transparencia y la integridad, ofreciendo información confiable mediante herramientas avanzadas de web scraping y análisis de datos."
   },
   "home": {
-    "title": "Bienvenido",
-    "content": "Bienvenido a ACME Learning Center."
+    "title": "Bienvenido/a",
+    "content": "Bienvenido/a a Risk Watch."
   },
   "page-not-found": {
     "title": "Página No Encontrada",

@@ -1,9 +1,8 @@
 {
-  "name": "learning-center",
+  "name": "risk-watch",
   "version": "1.0.0",
-  "description": "ACME Learning Center Application",
-  "author": "Open-Source Applications Development Team",
-  "license": "MIT",
+  "description": "Risk Watch Application",
+  "author": "Alison Arrieta",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
