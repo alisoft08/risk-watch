@@ -17,5 +17,7 @@ export class App {
     this.translate.addLangs(['en', 'es']);
     this.translate.setDefaultLang('en');
 
+
+
   }
 }
