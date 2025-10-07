@@ -18,7 +18,7 @@ export class SupplierScreeningModal {
   totalCountSignal = signal<number | null>(null);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
-
+  supplierName = '';  // nombre legal decodificado del supplier
 
   private fb = inject(FormBuilder);
   private learningApi = inject(LearningApi);
@@ -29,6 +29,7 @@ export class SupplierScreeningModal {
     this.isOpen = true;
     const raw = this.route.snapshot.paramMap.get('name') ?? '';
     const name = decodeURIComponent(raw).trim();
+    this.supplierName = name;  // guardamos el nombre decodificado
 
     if (name) {
       this.nameControl.setValue(name);
