@@ -12,8 +12,18 @@
     <div class="hits-count">
       <ng-container *ngIf="!loadingRiskSignal(); else loadingHits">
         {{ totalCountSignal() }}
+
+
+
+
       </ng-container>
-      <ng-template #loadingHits>...</ng-template>
+      <ng-template #loadingHits>
+
+        <div class="dots" aria-label="loading">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+
+      </ng-template>
     </div>
 
     <div *ngIf="loadingRiskSignal()" class="status-text">
