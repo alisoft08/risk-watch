@@ -1,44 +1,21 @@
 <div class="modal-backdrop" *ngIf="isOpen">
   <div class="modal-content">
-
     <h3>{{ 'screening.title' | translate }}</h3>
+    <!--
+        <form (submit)="$event.preventDefault(); onScreeningClick()">
+          <label>Nombre a evaluar</label>
+          <input [formControl]="nameControl" placeholder="Ej: John Doe" />
+          <button type="submit" [disabled]="loadingRiskSignal()">Buscar</button>-->
+    <button type="button" class="close-btn" (click)="closeModal()">{{ 'screening.close' | translate }}</button>
 
-    <p class="matches-line">
+
+    <div *ngIf="loadingRiskSignal()">{{ 'screening.searching' | translate }}</div>
+    <div *ngIf="errorRiskSignal() as e" class="error">{{ e }}</div>
+    <p>
       {{ 'screening.matchesFound' | translate }}
-      <strong class="supplier-name">{{ supplierName }}</strong>
+      <strong>{{ totalCountSignal() }}</strong>
     </p>
 
-    <!-- Número de coincidencias en línea aparte y grande -->
-    <div class="hits-count">
-      <ng-container *ngIf="!loadingRiskSignal(); else loadingHits">
-        {{ totalCountSignal() }}
-        <div>
-        <button mat-raised-button color="primary"
-                (click)="router.navigate(['suppliers', route.snapshot.paramMap.get('name'), 'screening', 'list'])">
-          {{ 'screening.viewList' | translate }}
-        </button>
-        </div>
-      </ng-container>
-      <ng-template #loadingHits>
-
-        <div class="dots" aria-label="loading">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
-
-      </ng-template>
-    </div>
-
-    <div *ngIf="loadingRiskSignal()" class="status-text">
-      {{ 'screening.searching' | translate }}
-    </div>
-    <div *ngIf="errorRiskSignal() as e" class="error">
-      {{ e }}
-    </div>
-
-    <div class="actions">
-      <button type="button" class="close-btn" (click)="closeModal()">
-        {{ 'screening.close' | translate }}
-      </button>
-    </div>
+    <button mat-raised-button color="primary" (click)="router.navigate(['suppliers', route.snapshot.paramMap.get('name'), 'screening', 'list'])">{{ 'screening.viewList' | translate }}</button>
   </div>
 </div>
