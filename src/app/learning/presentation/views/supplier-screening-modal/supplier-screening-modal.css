@@ -2,48 +2,102 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: transparent;   /* sin tinte */
-  backdrop-filter: none;     /* sin blur */
+  background: transparent;
+  backdrop-filter: none;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
 
+.dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  margin-top: .5rem;
+  min-height: 20px; /* mantiene el alto estable */
+}
 
-/* Contenedor principal del modal */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #64748b;
+  animation: bounce 1s infinite ease-in-out;
+  opacity: .6;
+}
+
+.dot:nth-child(2) { animation-delay: .15s; }
+.dot:nth-child(3) { animation-delay: .30s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .4; }
+  40%           { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Respeta usuarios con reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation: none; }
+}
+
+/* Contenedor principal centrado */
 .modal-content {
   background: #ffffff;
   padding: 1.5rem 2rem;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  width: 420px;             /* tamaño más pequeño */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  width: 420px;
   max-width: 90%;
   max-height: 80%;
-  overflow-y: auto;          /* scroll si el contenido crece */
+  overflow-y: auto;
   animation: fadeIn 0.3s ease;
+
+  /* Centrado horizontal de TODO el contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* Título */
 .modal-content h3 {
   margin-top: 0;
-  text-align: center;
   color: #2c3e50;
 }
 
-/* Inputs y botones */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-top: 1rem;
+/* Línea 'matches found for <supplier>' */
+.matches-line {
+  margin: .25rem 0 0;
+  font-size: 0.95rem;
+  color: #334155;
+}
+.supplier-name {
+  color: #2563eb;  /* azul llamativo para el nombre */
 }
 
-input {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
+/* Cantidad de hits: grande y llamativa, en nueva línea */
+.hits-count {
+  margin-top: .25rem;
+  font-weight: 800;
+  line-height: 1;
+  font-size: clamp(40px, 8vw, 64px);
+  color: #ef4444;               /* rojo vivo */
+  text-shadow: 0 2px 10px rgba(239,68,68,0.25);
+}
+
+/* Estado y errores centrados */
+.status-text { margin-top: .5rem; color: #475569; }
+.error { margin-top: .5rem; color: #b91c1c; }
+
+/* Botones centrados */
+.actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 button {
@@ -55,41 +109,21 @@ button {
   color: white;
   transition: background-color 0.2s;
 }
-
-button:disabled {
-  background-color: #aaa;
-}
-
-button:hover:not(:disabled) {
-  background-color: #1a242f;
-}
-
+button:disabled { background-color: #aaa; }
+button:hover:not(:disabled) { background-color: #1a242f; }
 
 .close-btn {
-  background-color: #ccc;
-  color: #000;
-  margin-left: 0.5rem;
+  background-color: #e5e7eb;
+  color: #111827;
 }
+.close-btn:hover { background-color: #d1d5db; }
 
-.close-btn:hover {
-  background-color: #bbb;
-}
-
-/* Animación de entrada */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Tabla (si la usas dentro del modal) */
 .risk-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  margin: 0 auto;           /* centrada en el modal */
 }
 .risk-table th, .risk-table td {
   padding: 8px 10px;
@@ -100,6 +134,11 @@ button:hover:not(:disabled) {
   background: #f8fafc;
   font-weight: 600;
   position: sticky;
-  top: 0; /* útil si el modal es alto con scroll */
+  top: 0;
 }
 
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
