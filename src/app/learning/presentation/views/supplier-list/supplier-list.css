@@ -2,3 +2,8 @@
   width: 100%;
   margin-bottom: 16px;
 }
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
