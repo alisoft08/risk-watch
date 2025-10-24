@@ -9,17 +9,18 @@
           {{ option.label | translate }}
         </a>
       }
-      <button mat-button (click)="onLogout()">
-        {{ 'option.logout' | translate }}
-      </button>
+
     }
 
     <app-language-switcher/>
 
+    @if (isAuthenticated) {
+      <button mat-button [matMenuTriggerFor]="userMenu" class="dropdown-btn">
+        <i class="fa-solid fa-caret-down"></i>
+      </button>
+    }
     <!-- Botón con menú desplegable -->
-    <button mat-button [matMenuTriggerFor]="userMenu" class="dropdown-btn">
-      <i class="fa-solid fa-caret-down"></i>
-    </button>
+
 
     <mat-menu #userMenu="matMenu">
       <button mat-button (click)="goToProfile()">
