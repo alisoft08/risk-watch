@@ -10,6 +10,34 @@
 
 :root {
   @include mat.toolbar-overrides((container-background-color: slategray, container-text-color: white));
+  .mat-mdc-button:hover,
+  .mdc-button:hover,
+  button.mat-mdc-button:hover {
+    background-color: transparent !important;
+  }
+
+
+  // Eliminar el ripple effect al hacer hover
+  .mat-mdc-button:hover .mat-mdc-button-persistent-ripple,
+  .mat-mdc-button:hover .mat-mdc-button-ripple,
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar el overlay de hover
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::after {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar estados de Material
+  .mat-mdc-button:hover .mat-mdc-focus-indicator,
+  .mat-mdc-button:hover .mat-mdc-button-touch-target {
+    display: none !important;
+  }
 }
 
 html {
@@ -21,6 +49,34 @@ html {
     typography: Roboto,
     density: 0,
   ));
+  .mat-mdc-button:hover,
+  .mdc-button:hover,
+  button.mat-mdc-button:hover {
+    background-color: transparent !important;
+  }
+
+
+  // Eliminar el ripple effect al hacer hover
+  .mat-mdc-button:hover .mat-mdc-button-persistent-ripple,
+  .mat-mdc-button:hover .mat-mdc-button-ripple,
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar el overlay de hover
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::after {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar estados de Material
+  .mat-mdc-button:hover .mat-mdc-focus-indicator,
+  .mat-mdc-button:hover .mat-mdc-button-touch-target {
+    display: none !important;
+  }
 }
 
 body {
@@ -28,7 +84,34 @@ body {
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
   // user's system settings.
   color-scheme: light;
+  .mat-mdc-button:hover,
+  .mdc-button:hover,
+  button.mat-mdc-button:hover {
+    background-color: transparent !important;
+  }
 
+
+  // Eliminar el ripple effect al hacer hover
+  .mat-mdc-button:hover .mat-mdc-button-persistent-ripple,
+  .mat-mdc-button:hover .mat-mdc-button-ripple,
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar el overlay de hover
+  .mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::before,
+  .mat-mdc-button:hover .mdc-button__ripple::after {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+
+  // Eliminar estados de Material
+  .mat-mdc-button:hover .mat-mdc-focus-indicator,
+  .mat-mdc-button:hover .mat-mdc-button-touch-target {
+    display: none !important;
+  }
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables

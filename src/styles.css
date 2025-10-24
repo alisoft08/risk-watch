@@ -6,3 +6,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container-with-spacing {
   margin: 10px;
 }
+
+/* Eliminar el fondo de hover en TODOS los mat-button */
+::ng-deep .mat-mdc-button:hover {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-mdc-button:hover .mat-mdc-button-persistent-ripple {
+  opacity: 0 !important;
+}
+
+::ng-deep .mat-mdc-button .mat-mdc-button-ripple {
+  display: none !important;
+}
