@@ -9,16 +9,19 @@
           {{ option.label | translate }}
         </a>
       }
-
-    }
-
-    <app-language-switcher/>
-
-    @if (isAuthenticated) {
       <button mat-button [matMenuTriggerFor]="userMenu" class="dropdown-btn">
         <i class="fa-solid fa-caret-down"></i>
       </button>
+
+
+
     }
+
+
+
+    <app-language-switcher/>
+
+
     <!-- Botón con menú desplegable -->
 
 
