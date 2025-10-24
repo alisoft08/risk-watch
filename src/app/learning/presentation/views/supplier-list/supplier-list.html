@@ -79,9 +79,11 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> {{ 'suppliers.actions' | translate }} </th>
       <td mat-cell *matCellDef="let supplier">
-        <button mat-button (click)="editSupplier(supplier.id)">{{ 'form.edit' | translate }}</button>
-        <button mat-button (click)="deleteSupplier(supplier.id)">{{ 'form.delete' | translate }}</button>
-        <button mat-button (click)="screenSupplier(supplier.legalName)">{{ 'form.screening' | translate }}</button>
+
+        <button mat-button (click)="editSupplier(supplier.id)"><i class="fa-solid fa-pen"></i></button>
+        <button mat-button (click)="deleteSupplier(supplier.id)"><i class="fa-solid fa-trash"></i></button>
+        <button mat-button (click)="screenSupplier(supplier.legalName)"><i class="fa-solid fa-user-secret"></i></button>
+
       </td>
     </ng-container>
 
