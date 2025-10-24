@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <h1>Risk Watch</h1>
     <div class="mat-spacer"></div>
+
     @if (isAuthenticated) {
       @for (option of options; track option.label) {
         <a mat-button [routerLink]="option.link" routerLinkActive="active">
@@ -12,7 +13,32 @@
         {{ 'option.logout' | translate }}
       </button>
     }
+
     <app-language-switcher/>
+
+    <!-- Botón con menú desplegable -->
+    <button mat-button [matMenuTriggerFor]="userMenu" class="dropdown-btn">
+      <i class="fa-solid fa-caret-down"></i>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-button (click)="goToProfile()">
+
+        <span class="mat-mdc-menu-item">
+          <i class="fa-solid fa-user"></i>
+          {{ 'option.profile' | translate }}
+        </span>
+      </button>
+      <button mat-button (click)="onLogout()">
+        <span class="mat-mdc-menu-item">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          {{ 'option.logout' | translate }}</span>
+
+
+      </button>
+    </mat-menu>
+
   </mat-toolbar-row>
 </mat-toolbar>
+
 <router-outlet/>

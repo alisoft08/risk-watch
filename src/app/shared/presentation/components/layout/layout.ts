@@ -5,6 +5,7 @@ import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/route
 import {TranslatePipe} from '@ngx-translate/core';
 import {LanguageSwitcher} from '../language-switcher/language-switcher';
 import {AuthStore} from '../../../application/auth-store';
+import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
 
 @Component({
   selector: 'app-layout',
@@ -16,8 +17,12 @@ import {AuthStore} from '../../../application/auth-store';
     RouterLinkActive,
     TranslatePipe,
     LanguageSwitcher,
-    RouterOutlet/*,
-    FooterContent*/
+    RouterOutlet,
+    MatMenuTrigger,
+    MatMenu
+
+    /*,
+        FooterContent*/
   ],
   templateUrl: './layout.html',
   styleUrl: './layout.css'
@@ -30,6 +35,7 @@ export class Layout {
     { link: '/home',  label: 'option.home'},
     { link: '/about', label: 'option.about'},
     { link: '/suppliers', label: 'option.suppliers'}
+
   ];
 
   get isAuthenticated() {
@@ -40,4 +46,9 @@ export class Layout {
     this.authStore.logout();
     this.router.navigate(['/sign-in']);
   }
+
+  goToProfile(): void {
+    this.router.navigate(['/profile']); // Ajusta según tu ruta de perfil
+  }
+
 }

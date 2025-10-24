@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About",
     "suppliers": "Suppliers",
-    "logout": "Logout"
+    "logout": "Logout",
+    "profile": "Profile"
   },
   "about": {
     "title": "About Us",

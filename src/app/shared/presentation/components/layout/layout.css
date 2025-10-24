@@ -1,3 +1,30 @@
 .mat-spacer {
   flex: 1 1 auto;
 }
+
+
+/* Menú en vertical */
+::ng-deep .mat-mdc-menu-panel {
+  min-width: 200px;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+::ng-deep .mat-mdc-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-menu-item i.fa-solid {
+  font-size: 18px;
+  width: 20px;
+  margin-right: 5px;
+}
+
